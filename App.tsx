@@ -1,20 +1,42 @@
+import { NavigationContainer } from '@react-navigation/native';
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
+
+
+import Home from './src/screens/Home';
+import MyTabs from './src/componentes/navigations/NavigationBotonTap';
+
+
+
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+
+<MyTabs/>
+   
+   
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f9f',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    paddingTop:88
   },
+  testo:{
+    fontSize:16,
+    fontWeight:"bold"
+  },
+  title:{
+    fontSize:48,
+    fontWeight:"bold",
+    marginBottom:8
+  }
 });
