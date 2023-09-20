@@ -7,6 +7,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Home from './src/screens/Home';
 import MyTabs from './src/componentes/navigations/NavigationBotonTap';
+import AccountNavegation from './src/componentes/navigations/AccountNavegation';
+import Account from './src/screens/Account';
 
 
 
