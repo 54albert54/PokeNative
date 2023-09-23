@@ -8,17 +8,11 @@ const Settings = (Props:any):JSX.Element => {
       }
 
 return(         
-<>              
-     <View>
+      <View>
       <Text>esteo es desde Settings</Text>
-  
-
       <Button title="go Home" onPress={()=>goToPage("Home")}/> 
-      
       <Button title="go Prueba3" onPress={()=>goToPage("Prueba3")}/> 
-    
       </View>          
-
-</>)}           
+)}           
 
 export default Settings ;

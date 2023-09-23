@@ -28,15 +28,11 @@ function MyTabs() {
         }
       }/> */}
       <Tab.Screen name="Account" component={AccountNavegation} options={{
-       
         tabBarIcon:({color,size})=><Icon name="user" color={color} size={size}/>
       }} />
       <Tab.Screen name="Pokedex" component={PokedexNavegation} options={{
-       tabBarLabel:"" ,
-       
-       
+        tabBarLabel:"" ,
         tabBarIcon:()=>RenderPokeBall()
-       
       }}/>
       <Tab.Screen name="favorite" component={FavoritoNavegation} options={{
         
