@@ -1,4 +1,42 @@
+import axios from 'axios';
+import { string } from 'yup';
+
 export const Url:string ="https://pokeapi.co/api/v2/pokemon/"
+
+export const FAVORITE_STORAGE = "favorito"
+
+export const USER = {
+  username:"admin",
+  password:"123456"
+}
+
+export type TUserDectail = {
+  name:string
+   lastname:string
+   username:string
+   email:string
+}
+export const USER_DECTAIL = {
+   name:"Angel ",
+   lastname:"Bernechea",
+   username:"PokemonMaster",
+   email:"PokemonMaster@fakemail.com"
+}
+
+export async function evolution (id:number){
+  const url = `https://pokeapi.co/api/v2/pokemon-species/${id}`
+  const data = await axios.get(url)
+  const linksEvo = data.data.evolution_chain
+  //const  realInfo = await evolutionPokemons(linksEvo)
+  return "realInfo"
+}
+
+export async function evolutionPokemons (link:string){
+  
+  const data = await axios.get(link)
+  return data.data
+}
+
 
 export const vista1 = {
   title:"",

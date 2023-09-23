@@ -1,25 +1,23 @@
 import { NavigationContainer } from '@react-navigation/native';
-
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 
 
-import Home from './src/screens/Home';
+
 import MyTabs from './src/componentes/navigations/NavigationBotonTap';
-import AccountNavegation from './src/componentes/navigations/AccountNavegation';
-import Account from './src/screens/Account';
+import { AuthProvider } from './src/context/Auth.context';
+
 
 
 
 
 export default function App() {
   return (
+    
     <NavigationContainer>
-
-<MyTabs/>
-   
-   
+      <AuthProvider>
+        <MyTabs/>
+     </AuthProvider>
     </NavigationContainer>
   );
 }

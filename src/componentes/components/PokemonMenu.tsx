@@ -1,18 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import PokeBoton from './Boton';
 
+type Props ={
+  isStats:boolean
+  setIsStats:any
+}
 
-
-const PokemonMenu = ():JSX.Element => {
+const PokemonMenu = ({isStats,setIsStats}:Props):JSX.Element => {
 
 return(         
 <>              
   <View style={styles.main}>
-  <View>
-    <Text onPress={()=>console.log('desde el About')}>About</Text>
-  </View>
-  <View >
-    <Text onPress={()=>console.log('desde el Stats')} >Stats</Text>
-  </View>
+  <PokeBoton setIsStats={setIsStats} isStats={!isStats} type={'About'} />
+  <PokeBoton setIsStats={setIsStats} isStats={isStats} type={'Stats'} />
+ 
   </View>
 </>
 )}           
@@ -25,6 +26,8 @@ const styles = StyleSheet.create({
     display:"flex",
     flexDirection:"row",
     justifyContent:"space-evenly",
-    marginBottom:20
+    position:"relative",
+    bottom:10
+    
   }
 })

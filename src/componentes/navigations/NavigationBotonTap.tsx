@@ -22,11 +22,11 @@ function MyTabs() {
       <Tab.Group> 
 
       </Tab.Group>
-      <Tab.Screen name="Home" component={Home} options={
+      {/* <Tab.Screen name="Home" component={Home} options={
         {
           tabBarIcon:({color,size})=><Icon name="home" color={color} size={size}/>
         }
-      }/>
+      }/> */}
       <Tab.Screen name="Account" component={AccountNavegation} options={{
        
         tabBarIcon:({color,size})=><Icon name="user" color={color} size={size}/>
@@ -38,13 +38,13 @@ function MyTabs() {
         tabBarIcon:()=>RenderPokeBall()
        
       }}/>
-      <Tab.Screen name="Favorite" component={FavoritoNavegation} options={{
+      <Tab.Screen name="favorite" component={FavoritoNavegation} options={{
         
       tabBarIcon:({color,size})=><Icon name="star" color={color} size={size}/>
       }}/> 
-      <Tab.Screen name="Settings" component={SettingNavegation} options={{
+      {/* <Tab.Screen name="Settings" component={SettingNavegation} options={{
         tabBarIcon:({color,size})=><Icon name="slack" color={color} size={size}/>
-      }}/>
+      }}/> */}
     </Tab.Navigator>
   );
 }

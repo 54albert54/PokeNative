@@ -1,18 +1,18 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import Account from '../../screens/Account';
 import Prueba from '../../screens/Pokemon';
-import Pokedex from '../../screens/Pokedes';
 import Favorite from '../../screens/Favorite';
-import { vista1 } from '../../utils/const';
+import { vista1 } from '../../util/const';
+import Pokemon from '../../screens/Pokemon';
 
 const Stack = createStackNavigator();
 
 function FavoritoNavegation() {
   return (
       <Stack.Navigator>
-      <Stack.Screen name="Favorite" component={Favorite}  options={vista1}/>
-      <Stack.Screen name="Prueba2" component={Prueba} />
-    </Stack.Navigator>
+      <Stack.Screen name="favoritos" component={Favorite}  options={vista1}/>
+      <Stack.Screen name="Pokemon" component={Pokemon} options={vista1} />
+     </Stack.Navigator>
+     
   );
 }
 export default FavoritoNavegation

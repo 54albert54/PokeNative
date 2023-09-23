@@ -1,7 +1,12 @@
 
 import { Button, StyleSheet, Text, View , Image , TouchableWithoutFeedback } from 'react-native';
-import { useNavigation } from "@react-navigation/native"
-import { Colors, POKEMON_TYPE_COLORS, TPokemon } from "../../utils/const";
+import { useFocusEffect, useNavigation } from "@react-navigation/native"
+import { Colors, POKEMON_TYPE_COLORS, TPokemon  } from '../../util/const';
+import useAuth from '../../hooks/useAuth';
+import { useCallback, useEffect, useState } from 'react';
+import { isPokemonFaforite } from '../../util/api';
+
+//import { Colors, POKEMON_TYPE_COLORS, TPokemon } from "../../utility/const";
 
 
 
@@ -15,6 +20,25 @@ type Props={
 const PokomonCards = ({poke}:Props):JSX.Element => {
   const colorData:Colors  = poke.types?.[0].type.name as Colors
   const navigation = useNavigation()
+  const [ isIn , setIsIn] = useState(false)
+
+  const data = useAuth();
+
+  useFocusEffect(
+    useCallback(()=>{
+      (async () => {
+        const icons = await isPokemonFaforite(poke.id)
+        if (typeof icons == "boolean"){
+          setIsIn(icons)
+          data.addAllPokemon(icons)
+          
+        }
+      })()
+    },[])
+  )
+  
+
+
 
 
   const bgStyle =()=>{
@@ -23,7 +47,7 @@ const PokomonCards = ({poke}:Props):JSX.Element => {
       return style
   }
   const gotoPokemon = ()=>{
-  
+    setIsIn(isIn)
   navigation.navigate("Pokemon",{id:poke})
 }
 
@@ -40,6 +64,7 @@ if (num.length ==1){
 return(         
   <TouchableWithoutFeedback onPress={gotoPokemon}>
     <View style={bgStyle()} >
+    {(isIn && data.auth )&& <Image style={styles.isFavorite } source={require("../../screens/assets/Estrella.png")}/>}
       <View style={styles.type}>
         <Text  style={styles.typeT} >
         {colorData}
@@ -58,7 +83,7 @@ export default PokomonCards ;
 const styles = StyleSheet.create({
   container: {
     flex:1,
-    width:120,
+    width:408,
     height:120,
     margin:10,
     display:"flex",
@@ -104,6 +129,12 @@ const styles = StyleSheet.create({
     position:"absolute",
     top:14,
     right:-30
+  },
+  isFavorite:{
+    position:"relative",
+    left:80,
+    width:30,
+    height:30
   }
   
 });

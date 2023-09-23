@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Account from '../../screens/Account';
 import Prueba from '../../screens/Pokemon';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { vista1 } from '../../utils/const';
+import { vista1 } from '../../util/const';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

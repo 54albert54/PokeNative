@@ -3,7 +3,7 @@ import Account from '../../screens/Account';
 import Prueba from '../../screens/Pokemon';
 import Pokedex from '../../screens/Pokedes';
 import Pokemon from '../../screens/Pokemon';
-import { vista1 } from '../../utils/const';
+import { vista1 } from '../../util/const';
 import PokemonView from '../../screens/PokemonView';
 
 const Stack = createStackNavigator();
@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 function PokedexNavegation() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Pokedex" component={Pokedex} options={vista1}/>
+      <Stack.Screen name="pokedex" component={Pokedex} options={vista1}/>
       <Stack.Screen name="Pokemon" component={Pokemon} options={vista1} />
       <Stack.Screen name="PokemonView" component={PokemonView}  />
 

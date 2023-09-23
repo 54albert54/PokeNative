@@ -1,29 +1,40 @@
 
 
 import { Button, StyleSheet, Text, View , Image , TouchableWithoutFeedback } from 'react-native';
-import { Colors, POKEMON_TYPE_COLORS, TPokemon } from '../utils/const';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Colors, POKEMON_TYPE_COLORS, TPokemon, evolution, evolutionPokemons } from '../util/const';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PokemonStats from '../componentes/components/PokemonStaft';
 import PokemonMenu from '../componentes/components/PokemonMenu';
+import PokemonAbout from '../componentes/components/PokemonAbout';
+import AddFavorites from '../componentes/components/addFavorite';
+import useAuth from '../hooks/useAuth';
 const Pokemon = (Props:any):JSX.Element => {
+  const { auth  } = useAuth()
   const [isShinny, setIsShinny ] =useState(false)
+  const [isStats, setIsStats ] =useState(false)
   const { navigation,route } = Props
   const data = route.params.id as TPokemon
   const stastPokemon = data.stats
   route as TPokemon
-  console.log('Props-----------',data.stats[0])
-  const poke = route.params.id
-  const colorData:Colors    = poke.types?.[0].type.name as Colors
-  const moreType = poke.types.length > 1
-  let colorData2 ="X"
-  if (moreType){
+  const poke = route.params.id as TPokemon
+  useEffect(()=>{
+    navigation.setOptions({
+      headerRight:()=>auth?<AddFavorites pokemon={poke}/>:"",
+      //  <Icon name='check' color="#fff" size={30}style={{margin:6,height:30,marginTop:40}}  onPress={()=>navigation.navigate('favorite')}/>,
+      headerLeft:()=> <Icon name='arrow-left' color="#fff" size={30}style={{margin:6,height:30,marginTop:40}}  onPress={()=>navigation.goBack()}/>
+    })
+    
+  },[navigation,poke])
   
-    colorData2 = poke.types?.[1].type.name as Colors
-  }
 
-  //
-   console.log('mas tipos',poke.types.length)
+  
+  const colorData:Colors    = poke.types?.[0].type.name as Colors
+
+
+ 
+  
   const numeral:string = POKEMON_TYPE_COLORS[colorData]
 
   const bgStyle =()=>{
@@ -51,7 +62,13 @@ const Pokemon = (Props:any):JSX.Element => {
   }else if (num.length ==2){
     num = "0"+num;
   }
-
+  const pokeDatos = {
+    height:poke.height,
+    weight:poke.weight,
+    ability:poke.abilities[0].ability.name,
+    types:poke.types,
+    num,
+  }
 return(         
 <>             
 <TouchableWithoutFeedback >
@@ -63,31 +80,31 @@ return(
         end={{ x: 0, y: 1 }}
       >
     <View style={styles.container} >
-      <View style={styles.type}>
-        <Text  style={styles.typeT} >
-        {colorData}
-        </Text>
-        {moreType && <Text style={styles.typeT} >{colorData2}</Text>}
-        </View>
+      
         
         <Image style={styles.img2 } source={require("../screens/assets/shadow.png")}/>
         <View style={styles.botonContainer}>
         <View style={bgStyle()}>
-          <Text style={{color:'#fff'}}  onPress={()=>changeShiny()}>
+          <Button title=' ' onPress={()=>changeShiny()} />
+          <Text style={{color:'#fff',bottom:16}}  onPress={()=>changeShiny()}>
           {isShinny?'Shiny':'Normal'}
           </Text>
         </View>
         </View>
         
-    <Text style={styles.title}>#{num} -   {poke.name} </Text>
+    
+    <View style={styles.nameCont}>
+    <Text style={styles.name}>{poke.name} </Text>
+
+    </View>
     
     <Image style={styles.img } source={{uri: imgUrl}}/>
 
     </View>
-    <PokemonMenu/>
+    <PokemonMenu isStats={isStats} setIsStats={setIsStats}/>
     <View style={styles.infoContainer}>
-
-    <PokemonStats stast={stastPokemon}/>
+    {!isStats && <PokemonAbout pokeDatos={pokeDatos}/>}
+    {isStats &&<PokemonStats stast={stastPokemon}/>}
     </View>
     
     </LinearGradient> 
@@ -108,15 +125,30 @@ const styles = StyleSheet.create({
     borderRadius:15,
     overflow:"hidden"
     },
+    nameCont:{
+      width:"100%",
+      height:90,
+      display:"flex",
+      justifyContent:"center",
+      alignItems:"center",
+      position:"absolute",
+      top:-20
+    },
+    name:{
+      fontSize:60,
+      fontWeight:"bold",
+      color:"#ffffff"
+    },
     infoContainer:{
       width:'100%',
       height:290,
-      borderWidth:0,
-      borderColor: '#000',
-      borderStyle:"solid",
-      position:"relative",
-      bottom:10,
-      borderRadius:10,
+      // borderWidth:0,
+      // borderColor: '#000',
+      // borderStyle:"solid",
+      // position:"relative",
+      
+      paddingTop:12,
+      
       
     },
     botonContainer:{
@@ -163,25 +195,6 @@ const styles = StyleSheet.create({
     bottom:130,
     textTransform:"uppercase",
     fontWeight:"bold"
-  },
-  type:{
-    display:"flex",
-    flexDirection:"row",
-    gap:20,
-    position:"absolute",
-    right:10,
-    top:10,
-    minWidth:50,
-    padding:10,
-    fontStyle:"italic", 
-    borderRadius:10,
-    backgroundColor:"#ffffff35"
-  },
-  typeT:{
-    color:"#fff",
-    textTransform:"uppercase",
-    fontWeight:"bold",
-    marginVertical:4,
   },
   img2:{
     width:360,

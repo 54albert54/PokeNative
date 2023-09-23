@@ -1,10 +1,10 @@
-import { Button, Text, View ,StyleSheet ,Image, Platform} from "react-native";
+import { Button, Text, View ,StyleSheet ,Image} from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 const Home = (Props:any):JSX.Element => {
   const { navigation } = Props
   
   const goToPage = (pageName:string)=>{
-    console.log('os',Platform.OS)
+    // console.log('os',Platform.OS)
 navigation.navigate(pageName)
 }
 return(         

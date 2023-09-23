@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View,FlatList } from 'react-native';
-import { Stat } from '../../utils/const';
+import { Stat } from '../../util/const';
 
 type Props={
   stast:Stat[]
@@ -22,8 +22,8 @@ const PokemonStats = ({stast}:Props):JSX.Element => {
 return(               
 <View >
   
-      {Datps.map((item) => (
-        <View style={styles.mainCotainer}>
+      {Datps.map((item, index) => (
+        <View key={index} style={styles.mainCotainer}>
           <View style={styles.stastCotainer}>
           <Text style={styles.stastName} >{item.stat.name}</Text>
           <Text style={styles.stastBase} >{item.base_stat}</Text>

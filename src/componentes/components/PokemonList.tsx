@@ -1,7 +1,7 @@
 import { Button, Text, View,FlatList,StyleSheet ,ActivityIndicator } from "react-native";
-import { TPokemon } from "../../utils/const";
+import { TPokemon } from "../../util/const";
 import PokomonCards from "./PokemonCard";
-import getPokemon from "../../utils/api";
+import {getPokemon }from "../../util/api";
 import { useState } from "react";
 type Props ={
   pokemon:TPokemon[],
