@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { ScrollView } from 'react-native'
 import {ViewBase,Button, StyleSheet, Text, View } from 'react-native';
 import {getPokemon, getPokemonLocalStorage} from '../util/api';
 import { TPokemon, Type } from '../util/const';
@@ -31,10 +32,10 @@ const Pokedex = (Props:any):JSX.Element => {
 
 return(         
 <>              
-    <View>
+    <ScrollView>
       <PokemonList setPokemon={setPokemon} pokemon={pokemon!}/>
-    </View>      
-    <Button title="gooo" onPress={()=>goToPage("Pokemon")}/>       
+    </ScrollView>      
+   
 </>)}           
 
 export default Pokedex ;

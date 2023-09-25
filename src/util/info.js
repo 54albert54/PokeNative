@@ -1,3 +1,4 @@
+import { number } from "yup"
 
 const data = {
 	"baby_trigger_item": null,
@@ -80,3 +81,31 @@ const data = {
 	},
 	"id": 1
 }
+
+
+const createPhoneNumber=(number) =>{ 
+	 const rta = number.reduce((a,b)=>{ 
+		if (typeof b == 'string'){
+			if (a.hasOwnProperty(b)){
+				a[b] += 1
+			}else{
+			a[b]=1}
+		}
+		if (typeof b == 'number'){
+			if (a.hasOwnProperty('numbers')){
+				a.numbers.push(b)
+			}else{
+			a.numbers = []
+				a.numbers.push(b)
+		}}
+		return( a  ) }, {})
+	 return (rta )
+}
+const response =  createPhoneNumber(["mario", 2, "medro", "medro", "medro", 4, "juan", 6, "ana", 8, "luis", 0])
+
+
+
+
+
+let name = "angela"
+let aver = name.replace("a",'A')

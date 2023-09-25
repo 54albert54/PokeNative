@@ -15,6 +15,7 @@ export async  function getFavoritesPokemon (pokemonFavorites:[]){
   const pokeArray:TPokemon[] = []
   for (let i = 0 ; i < pokemonFavorites.length  ; i++){
     const response = await axios.get<TPokemon>(Url+pokemonFavorites[i])
+  
     pokeArray.push(response.data )
   }
 return   pokeArray  
@@ -23,7 +24,7 @@ return   pokeArray
 
 export async function getPokemonLocalStorage (){
   try {
-    const response =  await AsyncStorage.getItem(FAVORITE_STORAGE) || []
+    const response =  await AsyncStorage.getItem(FAVORITE_STORAGE) || [151,32,25]
     
     const pokemonSaved = JSON.parse(response);
     const pokemonSaved2 = JSON.parse(pokemonSaved)

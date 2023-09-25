@@ -63,6 +63,7 @@ return(
   <Text style={styles.errors}>{error}</Text>
 
     </View>
+    <Text>user : admin - password :123456</Text>
 </View>
 
 )}           
