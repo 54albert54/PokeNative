@@ -1,22 +1,52 @@
-# Pokedex 
-### Esta creado con React-native.
-###### Esta optimizado para ios pero gracias a la portavilidad portabilidad de react tambien se puede utilizar en antroid, 
- 
+# Pokedex App
 
+¡Bienvenido a la Pokedex App! Esta aplicación fue creada con React Native y TypeScript, aprovechando una base de datos PostgreSQL para proporcionar información detallada sobre Pokémon. Descubre nuevas especies, sus habilidades y más.
 
-[Link a la version web][01]
+## Características
 
-[01]:  https://65111f2a70ade65a3ac6363e--astounding-kashata-dbb4fc.netlify.app
+- **Interfaz Intuitiva:** Diseño amigable y fácil de usar para explorar información sobre Pokémon.
+- **Base de Datos PostgreSQL:** Almacena y recupera datos detallados de Pokémon.
+- **React Native y TypeScript:** Desarrollo rápido y seguro con las ventajas de TypeScript en el ecosistema de React Native.
+- **Axios para Llamadas a la API:** Experiencia fluida al utilizar Axios para interactuar con la API de Pokémon.
 
+## Demostración
 
-![](https://pbs.twimg.com/media/F6vv6h5WoAAjDW0?format=png&name=900x900)
-![](https://pbs.twimg.com/media/F6vv6h5XIAEIAot?format=png&name=900x900)
+![Pokedex App](demo.gif)
 
-![](https://pbs.twimg.com/media/F6vv6h8XYAAx9ol?format=png&name=900x900)
-![](https://pbs.twimg.com/media/F6vv_FQWUAAJ97G?format=png&name=900x900)
-![](https://pbs.twimg.com/media/F6vv_FRWsAAlrv_?format=png&name=900x900)
-![](https://pbs.twimg.com/media/F6vv_FTWcAAdk5s?format=png&name=900x900)
+## Tecnologías Utilizadas
 
+- [React Native](https://reactnative.dev): Desarrollo de aplicaciones móviles.
+- [TypeScript](https://www.typescriptlang.org): Mejora la productividad y seguridad en el desarrollo.
+- [PostgreSQL](https://www.postgresql.org): Sistema de gestión de bases de datos.
+- [Axios](https://axios-http.com): Cliente HTTP para realizar llamadas a la API.
+
+## Instalación
+
+1. Clona este repositorio:
+
+   ```bash
+   git clone https://github.com/tuusuario/PokedexApp.git
+   cd PokedexApp
+   npm install
+   ```
+  ### andorid
+  
+  ```bash
+  npx react-native run-android
+  ```
+    ### iphone
+  
+  ```bash
+  npx react-native run-ios
+  ```
+  
+  Asegúrate de tener configurado tu entorno para React Native.
+
+## Contribuciones
+¡Contribuciones son bienvenidas! Si encuentras errores o mejoras posibles, por favor, abre un issue o envía un pull request.
+
+ ## Licencia
+Este proyecto está bajo la Licencia MIT - consulta el archivo LICENSE.md para más detalles.
 
 
 
